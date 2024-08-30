@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout title='ESCRITOS'>
+  <section class="text-center p-10">
+    <div class="max-w-7xl mx-auto px-4 md:px-0">
+      <div class="mb-12">
+        <div class="flex items-center justify-center space-x-4">
+            <img src="/img/general/sparkle.png" class="w-16 h-16" alt="">
+            <h1 class="text-4xl font-lora text-[#322203]">ESCRITOS</h1>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card image="/img/escritos/ejemplo.png" title="VOLANDO" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        <Card image="/img/escritos/ejemplo.png" title="JUNTOS" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        <Card image="/img/escritos/ejemplo.png" title="MI MUNDO" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        <Card image="/img/escritos/ejemplo.png" title="MI MUNDO" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+      </div>
+    </div>
+  </section>
+</Layout>
