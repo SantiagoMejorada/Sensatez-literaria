@@ -1,0 +1,38 @@
+---
+import Layout from './Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<'escritos'>['data'];
+
+const { title, author, authorImage, image, date, justify } = Astro.props;
+const lineBaseImage = '/img/escritos/line-base.png';
+---
+
+<Layout title={title}>
+  <section class="flex flex-col md:flex-row items-start p-4 mt-6 gap-6">
+    <!-- Imagen a la izquierda -->
+    <div class="hidden md:block w-1/2">
+      <img src={image} alt="Imagen decorativa" class="h-[80vh] object-cover" />
+    </div>
+
+    <!-- Contenido a la derecha -->
+    <div class="w-full md:w-1/2 flex flex-col items-center justify-start">
+      <!-- Título -->
+      <h1 class="text-3xl font-lora text-[#322203] mb-4">{title}</h1>
+
+      <!-- Linea decorativa debajo del título -->
+      <img src={lineBaseImage} alt="Decorative line" class="mb-4" />
+
+      <!-- Imagen del autor con nombre -->
+      <div class="flex items-center mb-6">
+        <img src={authorImage} alt={author} class="w-12 h-12 mr-3" />
+        <span class="text-lg font-semibold font-lora text-[#322203]">{author}</span>
+      </div>
+
+      <!-- Contenido del markdown -->
+      <div class={`prose max-w-xl leading-relaxed font-inter text-[#322203] ${justify ? 'text-justify' : 'text-left'} self-center`}>
+        <slot />
+      </div>
+    </div>
+  </section>
+</Layout>
