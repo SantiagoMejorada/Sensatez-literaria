@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/Card.astro';
+import SearchPosts from '../../components/SearchPosts.astro';
 
 import { sortByDateDescending } from '../../utils/posts-utils'
 
@@ -18,15 +19,7 @@ const posts = sortByDateDescending(await getCollection('resenas'));
             <img src="/img/general/sparkle.png" class="w-16 h-16" alt="">
             <h1 class="text-4xl font-lora text-[#322203]">RESEÑAS</h1>
         </div>
-        <!-- Contenedor del buscador alineado a la derecha -->
-        <div class="mt-4 flex justify-end">
-          <input 
-            id="search-posts"
-            type="text" 
-            placeholder="Buscar" 
-            class="border border-gray-300 rounded-full px-4 py-2 focus:outline-none shadow-sm transition-all duration-300 hover:border-[#322203]"
-          />
-        </div>
+        <SearchPosts/>
       </div>
       <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map((post) => (
@@ -41,37 +34,3 @@ const posts = sortByDateDescending(await getCollection('resenas'));
     </div>
   </section>
 </Layout>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search-posts');
-    const postsGrid = document.getElementById('posts-grid');
-    if (searchInput && postsGrid) {
-      const cards = postsGrid.querySelectorAll<HTMLElement>('.card');
-      const inputElement = searchInput as HTMLInputElement; 
-
-      inputElement.addEventListener('input', () => {
-      const searchTerm = inputElement.value
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '');
-
-      cards.forEach((card) => {
-        const title = card.getAttribute('data-title');
-        console.log(title)
-        const normalizedTitle = title || ''
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '');
-
-        if (normalizedTitle.includes(searchTerm)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-    }
-  });
-</script>
-
