@@ -1,9 +1,9 @@
 ---
-title: 'VOLANDO2'
+title: 'MI MUNDO'
 author: 'Eli Montero'
 authorImage: '/img/general/author.png'
-image: '/img/escritos/volando.png'
-date: '1/09/24'
+image: '/img/escritos/mi-mundo.png'
+date: '29/08/24'
 justify: true
 ---
 Tomé un vuelo de vuelta a casa, con el corazón lleno de un amor infinito.

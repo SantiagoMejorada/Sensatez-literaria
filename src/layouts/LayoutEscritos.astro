@@ -4,15 +4,15 @@ import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'escritos'>['data'];
 
-const { title, author, authorImage, image, date, justify } = Astro.props;
+const { title, author, authorImage, image, justify } = Astro.props;
 const lineBaseImage = '/img/escritos/line-base.png';
 ---
 
 <Layout title={title}>
   <section class="flex flex-col md:flex-row items-center p-4 mt-6 gap-6">
     <!-- Imagen a la izquierda -->
-    <div class="hidden md:block w-1/2">
-      <img src={image} alt={title} class="h-[80vh] object-cover mx-auto" />
+    <div class="w-full md:w-1/2 flex md:block mt-6 md:mt-0">
+      <img src={image} alt={title} class="h-auto md:h-[80vh] object-cover mx-auto" />
     </div>
 
     <!-- Contenido a la derecha -->
@@ -20,7 +20,7 @@ const lineBaseImage = '/img/escritos/line-base.png';
       <!-- Título -->
       <h1 class="text-3xl font-lora text-[#322203] mb-4">{title}</h1>
 
-      <!-- Linea decorativa debajo del título -->
+      <!-- Línea decorativa debajo del título -->
       <img src={lineBaseImage} alt="Linea decorativa" class="mx-auto" />
 
       <!-- Imagen del autor con nombre -->

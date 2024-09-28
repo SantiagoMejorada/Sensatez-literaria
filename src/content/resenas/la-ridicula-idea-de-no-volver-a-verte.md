@@ -1,9 +1,10 @@
 ---
-title: 'TE DÍ OJOS Y MIRASTE LAS TINIEBLAS'
+title: 'LA RIDÍCULA IDEA DE NO VOLVER A VERTE'
 author: 'Eli Montero'
 authorImage: '/img/general/author.png'
-image: '/img/resenas/ojos.jpeg'
-date: '03/04/24'
+image: '/img/resenas/la-ridicula-idea-portada.png'
+textImage: '/img/resenas/la-ridicula-idea.jpg'
+date: '02/04/24'
 labels: ['Reseña', 'Terror', 'Cuentos', 'Autoras Latinas']
 ---
 "Cuando el diablo duda, a la mujer pregunta"👹

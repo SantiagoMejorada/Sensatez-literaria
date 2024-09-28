@@ -32,7 +32,8 @@ const resenas = defineCollection({
 		author: z.string(),
 		authorImage: z.string(),
 		image: z.string(),
-		date: z.coerce.date().optional(),
+		textImage: z.string(),
+		date: z.string(),
 		labels: z.array(z.string()).optional()
 	}),
 });

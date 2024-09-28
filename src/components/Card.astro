@@ -2,15 +2,29 @@
 interface Props {
   image: string;
   title: string;
+  class?: string;
+  'data-title'?: string;
 }
 
-const { image, title } = Astro.props as Props;
+const { image, title, ...props } = Astro.props as Props;
 const currentPath = Astro.url.pathname;
-const slug = title.toLowerCase().replace(/\s+/g, '-');
+
+//Removemos caracteres especiales
+const slug = title
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/ñ/g, 'n')
+  .replace(/\s+/g, '-')
+  .replace(/[^a-z0-9\-]/g, '');
+
 const href = `${currentPath}/${slug}`;
 ---
 
-<a href={href} class="block shadow-lg p-4 rounded-lg cursor-pointer transition-transform transform hover:scale-105">
-  <img src={image} alt={title} class="mx-auto mb-4 max-w-56"/>
+<a
+  href={href}
+  class={`block shadow-lg p-4 rounded-lg cursor-pointer transition-transform transform hover:scale-105 ${props.class || ''}`}
+  data-title={props['data-title'] || ''}>
+  <img src={image} alt={title} class="mx-auto mb-4 max-w-64"/>
   <h3 class="text-xl text-center font-lora text-[#322203] mb-2">{title}</h3>
 </a>
