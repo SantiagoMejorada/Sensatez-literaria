@@ -1,18 +1,22 @@
 ---
-import Layout from './Layout.astro';
-import type { CollectionEntry } from 'astro:content';
+import Layout from "./Layout.astro";
+import type { CollectionEntry } from "astro:content";
 
-type Props = CollectionEntry<'escritos'>['data'];
+type Props = CollectionEntry<"escritos">["data"];
 
 const { title, author, authorImage, image, justify } = Astro.props;
-const lineBaseImage = '/img/escritos/line-base.png';
+const lineBaseImage = "/img/escritos/line-base.png";
 ---
 
 <Layout title={title}>
   <section class="flex flex-col md:flex-row items-center p-4 mt-6 gap-6">
     <!-- Imagen a la izquierda -->
     <div class="w-full md:w-1/2 flex md:block mt-6 md:mt-0">
-      <img src={image} alt={title} class="h-auto md:h-[80vh] object-cover mx-auto" />
+      <img
+        src={image}
+        alt={title}
+        class="h-auto md:h-[80vh] object-cover mx-auto"
+      />
     </div>
 
     <!-- Contenido a la derecha -->
@@ -26,11 +30,15 @@ const lineBaseImage = '/img/escritos/line-base.png';
       <!-- Imagen del autor con nombre -->
       <div class="flex items-center mb-6">
         <img src={authorImage} alt={author} class="w-12 h-12 mr-3" />
-        <span class="text-lg font-semibold font-lora text-[#322203]">{author}</span>
+        <span class="text-lg font-semibold font-lora text-[#322203]"
+          >{author}</span
+        >
       </div>
 
       <!-- Contenido del markdown -->
-      <div class={`prose max-w-xl mx-auto leading-relaxed font-inter text-[#322203] ${justify ? 'text-justify' : 'text-center'}`}>
+      <div
+        class={`prose max-w-xl mx-auto leading-relaxed font-inter text-[#322203] ${justify ? "text-justify" : "text-center"}`}
+      >
         <slot />
       </div>
     </div>

@@ -1,0 +1,40 @@
+---
+import { slugify } from "../utils/posts-utils";
+import Label from "./Label.astro";
+
+interface Props {
+  image: string;
+  title: string;
+  text: string;
+  type: string;
+  class?: string;
+  "data-title"?: string;
+}
+
+const { image, title, text, type, ...props } = Astro.props as Props;
+const currentPath = Astro.url.pathname;
+
+// Removemos caracteres especiales
+const slug = slugify(title);
+
+const href = `${currentPath}/${slug}`;
+---
+
+<a
+  href={href}
+  class={`block p-4 rounded-lg cursor-pointer transition-transform transform hover:scale-105 ${props.class || ""}`}
+  data-title={props["data-title"] || ""}
+>
+  <img src={image} alt={title} class="mx-auto mb-4 max-w-64" />
+
+  <div class="flex flex-wrap items-center mb-2">
+    <h3 class="text-xl font-lora text-left text-[#322203]">
+      {title}
+      <Label text={type} bold={true} />
+    </h3>
+  </div>
+
+  <p class="text-left text-[#845533] mb-4">
+    {text}
+  </p>
+</a>

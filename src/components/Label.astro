@@ -1,0 +1,25 @@
+---
+interface Props {
+  text: string;
+  font?: string;
+  color?: string;
+  background?: string;
+  bold?: boolean;
+}
+
+const {
+  text,
+  font = "font-inter",
+  color = "text-[#322203]",
+  background = "bg-[#E0D2B9]",
+  bold = false,
+} = Astro.props;
+
+const fontWeight = bold ? "font-semibold" : "";
+---
+
+<span
+  class={`${background} ${color} ${font} ${fontWeight} py-1 px-3 rounded-full text-sm`}
+>
+  {text}
+</span>

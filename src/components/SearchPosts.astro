@@ -1,44 +1,44 @@
 <div class="mt-4 flex justify-end">
-    <input 
-      id="search-posts"
-      type="text" 
-      placeholder="Buscar" 
-      class="border border-gray-300 rounded-full px-4 py-2 focus:outline-none shadow-sm transition-all duration-300 hover:border-[#322203]"
-    />
-  </div>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const searchInput = document.getElementById('search-posts');
-      const postsGrid = document.getElementById('posts-grid');
-      if (searchInput && postsGrid) {
-        const cards = postsGrid.querySelectorAll<HTMLElement>('.card');
-        const inputElement = searchInput as HTMLInputElement;
-        
-        const normalizeText = (text: string) => {
-          return text.toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, ''); // Elimina marcas diacríticas (acentos y tildes)
-        };
-  
-        inputElement.addEventListener('input', () => {
+  <input
+    id="search-posts"
+    type="text"
+    placeholder="Buscar"
+    class="border border-gray-300 rounded-full px-4 py-2 focus:outline-none shadow-sm transition-all duration-300 hover:border-[#322203]"
+  />
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-posts");
+    const postsGrid = document.getElementById("posts-grid");
+    if (searchInput && postsGrid) {
+      const cards = postsGrid.querySelectorAll<HTMLElement>(".card");
+      const inputElement = searchInput as HTMLInputElement;
+
+      const normalizeText = (text: string) => {
+        return text
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, ""); // Elimina marcas diacríticas (acentos y tildes)
+      };
+
+      inputElement.addEventListener("input", () => {
         const searchTerm = normalizeText(inputElement.value)
           .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '');
-  
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
         cards.forEach((card) => {
-          const title = card.getAttribute('data-title');
-          const normalizedTitle = normalizeText(title || '')
-  
+          const title = card.getAttribute("data-title");
+          const normalizedTitle = normalizeText(title || "");
+
           if (normalizedTitle.includes(searchTerm)) {
-            card.style.display = '';
+            card.style.display = "";
           } else {
-            card.style.display = 'none';
+            card.style.display = "none";
           }
         });
       });
-      }
-    });
-  </script>
-  
+    }
+  });
+</script>

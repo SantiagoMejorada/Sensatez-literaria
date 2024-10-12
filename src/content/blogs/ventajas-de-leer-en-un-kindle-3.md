@@ -1,10 +1,10 @@
 ---
-title: 'VENTAJAS DE LEER EN UN KINDLE'
+title: 'VENTAJAS DE LEER EN UN KINDLE 3'
 author: 'Eli Montero'
 authorImage: '/img/general/author.png'
 image: '/img/blogs/reading-girl-blog.jpg'
 textImage: '/img/resenas/te-di-ojos.jpeg'
-date: '12/10/24'
+date: '10/10/24'
 labels: ['Kindle', 'Digital']
 type: 'Escritura creativa'
 ---

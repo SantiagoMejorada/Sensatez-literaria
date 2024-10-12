@@ -1,32 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-import Layout from '../../layouts/Layout.astro';
-import Card from '../../components/Card.astro';
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
 
-import { sortByDateDescending } from '../../utils/posts-utils'
+import { sortByDateDescending } from "../../utils/posts-utils";
 
-const posts = sortByDateDescending(await getCollection('escritos'));
-
+const posts = sortByDateDescending(await getCollection("escritos"));
 ---
 
-<Layout title='ESCRITOS'>
+<Layout title="ESCRITOS">
   <section class="text-center p-10">
     <div class="max-w-7xl mx-auto px-4 md:px-0">
       <div class="mb-12">
         <div class="flex items-center justify-center space-x-4">
-            <img src="/img/general/sparkle.png" class="w-16 h-16" alt="">
-            <h1 class="text-4xl font-lora text-[#322203]">ESCRITOS</h1>
+          <img src="/img/general/sparkle.png" class="w-16 h-16" alt="" />
+          <h1 class="text-4xl font-lora text-[#322203]">ESCRITOS</h1>
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <Card
-            image={post.data.image}
-            title={post.data.title}
-          />
-        ))}
-        
+        {
+          posts.map((post) => (
+            <Card image={post.data.image} title={post.data.title} />
+          ))
+        }
       </div>
     </div>
   </section>

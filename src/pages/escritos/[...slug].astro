@@ -1,21 +1,22 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from "astro:content";
 
-import Escritos from '../../layouts/LayoutEscritos.astro';
+import Escritos from "../../layouts/LayoutEscritos.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('escritos');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
-};
+  const posts = await getCollection("escritos");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
 
-type Props = CollectionEntry<'escritos'>;
+type Props = CollectionEntry<"escritos">;
 
 const post = Astro.props;
 const { Content } = await post.render();
 ---
+
 <Escritos {...post.data}>
-    <Content />
+  <Content />
 </Escritos>

@@ -1,111 +1,77 @@
-<!-- ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+---
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/BlogCard.astro';
+import Label from '../../components/Label.astro'
+import SearchPosts from '../../components/SearchPosts.astro';
+
+import { 
+  sortByDateDescending,
+  extractFirstWords, 
+  formatDateInSpanish, 
+  slugify 
+} from '../../utils/posts-utils'
+
+const posts = sortByDateDescending(await getCollection('blogs'));
+const currentPath = Astro.url.pathname;
+
+//Obtenemos el post mas reciente para usarlo en la sección de lo más reciente
+const [mostRecentPost, ...allRemainigPosts] = posts;
+
+const slug = slugify(mostRecentPost.data.title);
+const href = `${currentPath}/${slug}`;
+
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html> -->
+<Layout title='Blogs'>
+  <section class="text-center p-10">
+    <div class="max-w-7xl mx-auto px-4 md:px-0">
+      <div class="mb-12">
+        <SearchPosts/>
+      </div>
+      <!-- Blog más reciente -->
+      <div class="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+        <div class="text-left">
+          <Label text="LO MÁS RECIENTE" font="font-inter" color="text-white" background="bg-[#8C6E4A]"/>
+          <h2 class="text-3xl font-lora  text-[#322203] mb-4 mt-4">
+            {mostRecentPost.data.title}
+          </h2>
+
+          <div class="text-gray-500 mb-2">
+            <span class="text-md text-[#8C6E4A]">
+              {formatDateInSpanish(mostRecentPost.data.date)}
+            </span>
+            <Label/ text={mostRecentPost.data.type}>
+          </div>
+
+          <p class="text-base mb-6 whitespace-pre-line">
+            {extractFirstWords(mostRecentPost.body, 100)}
+          </p>
+          <a href={href} class="inline-block bg-transparent text-[#322203] font-semibold border border-[#322203] py-2 px-4 rounded transition-transform transform hover:scale-105">
+            Leer más
+          </a>
+        </div>
+
+        <div>
+          <img src={mostRecentPost.data.image} alt={mostRecentPost.data.title} class="rounded-lg w-full object-cover">
+        </div>
+      </div>
+
+      <hr class="border-t-1 border-[#8C6E4A]">
+      <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {allRemainigPosts.map((post) => (
+          <Card
+            image={post.data.image}
+            title={post.data.title}
+            text={extractFirstWords(post.body)}
+            type={post.data.type}
+            class='card'
+            data-title={post.data.title.toLowerCase()}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
