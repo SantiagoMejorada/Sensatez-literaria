@@ -1,9 +1,16 @@
 ---
 import Layout from './Layout.astro';
-import type { CollectionEntry } from 'astro:content';
 import { format, parse } from 'date-fns';
 import { es } from 'date-fns/locale';
-type Props = CollectionEntry<'resenas'>['data'];
+
+type Props = {
+  title: string;
+  author: string;
+  authorImage: string;
+  textImage: string;
+  date: string;
+  labels?: string[];
+};
 
 const { title, author, authorImage, textImage, date, labels } = Astro.props;
 
