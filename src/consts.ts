@@ -1,5 +1,3 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const DEFAULT_WORD_LIMIT = 15;
+export const BLOG_WORDS_LENGTH = 100;
+export const CAROUSEL_WORDS_LENGTH = 60;

@@ -1,6 +1,8 @@
 import { parse, isValid, format } from "date-fns";
 import { es } from "date-fns/locale";
 
+import { CAROUSEL_WORDS_LENGTH, DEFAULT_WORD_LIMIT } from "../consts";
+
 /**
  * Ordena una colección de elementos en orden descendente basado en su fecha.
  * @param collection - La colección de elementos a ordenar.
@@ -30,7 +32,7 @@ export const sortByDateDescending = <T extends { data: { date: string } }>(
  */
 export const extractFirstWords = (
   content: string,
-  wordLimit: number = 15
+  wordLimit: number = DEFAULT_WORD_LIMIT
 ): string => {
   const plainText = content.replace(/(<([^>]+)>)/gi, ""); // Remover etiquetas HTML
   const words = plainText.split(" ").slice(0, wordLimit).join(" ");
@@ -66,4 +68,26 @@ export const formatDateInSpanish = (
 ): string => {
   const parsedDate = parse(date, inputFormat, new Date());
   return format(parsedDate, outputFormat, { locale: es });
+};
+
+/**
+ * Genera un arreglo de items para el componente Carousel a partir de una colección de posts.
+ * @param collection - La colección de elementos que contienen los datos del post.
+ * @param type - El tipo de post (por ejemplo: "Blog", "Reseña", "Escrito").
+ * @param getBody - Función opcional para obtener el contenido del post si no está en 'data.body'.
+ * @returns Un arreglo de objetos formateados con title, text, image y type.
+ */
+export const generateCarouselItems = <
+  T extends { data: { title: string; image: string }; body?: string },
+>(
+  collection: T[],
+  type: string,
+  getBody: (item: T) => string = (item) => item.body || ""
+) => {
+  return collection.map((item) => ({
+    title: item.data.title,
+    text: extractFirstWords(getBody(item), CAROUSEL_WORDS_LENGTH),
+    image: item.data.image,
+    type: type,
+  }));
 };
