@@ -13,6 +13,12 @@ El blog está diseñado para ser compatible tanto con Desktop como con Mobile (a
 
 **Nota**: Desarrollo aun sin terminar, puede haber bugs, estilos incompletos o alguna seccion faltante.
 
+
+![1](https://github.com/user-attachments/assets/a7a34c16-31b0-41aa-a242-912e9b62421a)
+
+
+![2](https://github.com/user-attachments/assets/c7b7c492-556f-4366-bcfe-f3530c2f8c4e)
+
 [Vista previa del blog!](https://sensatez-literaria.vercel.app)
 
 
