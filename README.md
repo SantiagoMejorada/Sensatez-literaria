@@ -1,68 +1,65 @@
-# Astro Starter Kit: Blog
+# Sensatez Literaria
 
-```sh
-npm create astro@latest -- --template blog
-```
+Blog desarrollado en Astro 4 para una cuenta de libros.  
+El código del blog es de código abierto, lo que permite que cualquier persona lo utilice como plantilla para su propio proyecto.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+## Tecnologías utilizadas
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Astro**: Framework estático rápido y eficiente.
+- **Tailwind CSS**: Para un diseño limpio y moderno.
+- **TypeScript**: Garantizando un código más seguro y mantenible.
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+El blog está diseñado para ser compatible tanto con Desktop como con Mobile (aunque aún hay mejoras pendientes en la versión mobile).
+**Nota**: Desarrollo aun sin terminar, puede haber bugs, estilos incompletos o alguna seccion faltante
+![Vista previa del blog](https://sensatez-literaria.vercel.app)
 
-Features:
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## 🔧 Estructura del proyecto
 
-## 🚀 Project Structure
+Dentro del proyecto encontrarás los siguientes archivos y carpetas:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```plaintext
 ├── public/
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+│   ├── components/          # Componentes reutilizables
+│   │   ├── BlogCard.astro
+│   │   ├── Card.astro
+│   │   ├── Carousel.astro
+│   │   ├── Footer.astro
+│   │   ├── Header.astro
+│   │   ├── Label.astro
+│   │   └── SearchPosts.astro
+│   ├── content/             # Contenido en Markdown o MDX
+│   │   ├── blogs/
+│   │   ├── escritos/
+│   │   └── resenas/
+│   │   └── config.ts        # Configuración adicional para colecciones
+│   ├── layouts/             # Diseños reutilizables
+│   │   ├── Layout.astro
+│   │   ├── LayoutEscritos.astro
+│   │   └── LayoutPosts.astro
+│   ├── pages/               # Rutas del sitio
+│   │   ├── blogs/
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── escritos/
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── resenas/
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── 404.astro        # Página de error 404
+│   │   ├── index.astro      # Página principal
+│   │   ├── inicio.astro     # Página de inicio
+│   │   ├── rss.xml.js       # Archivo RSS para el feed
+│   │   └── sobre-mi.astro   # Página "Sobre mí"
+│   ├── utils/               # Utilidades y constantes
+│   │   ├── consts.ts
+│   │   └── env.d.ts
+├── .gitignore               # Archivos a ignorar en Git
+├── astro.config.mjs         # Configuración de Astro
+├── package-lock.json        # Archivo de bloqueo de dependencias
+├── package.json             # Dependencias y scripts
+├── README.md                # Documentación del proyecto
+├── tailwind.config.mjs      # Configuración de Tailwind CSS
+└── tsconfig.json            # Configuración de TypeScript
