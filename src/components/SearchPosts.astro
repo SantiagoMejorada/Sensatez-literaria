@@ -19,7 +19,7 @@
         return text
           .toLowerCase()
           .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, ""); // Elimina marcas diacríticas (acentos y tildes)
+          .replace(/[\u0300-\u036f]/g, ""); // Elimina marcas dialécticas (acentos y tildes)
       };
 
       inputElement.addEventListener("input", () => {

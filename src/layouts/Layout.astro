@@ -6,10 +6,10 @@ import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
-  nobg?: boolean;
+  noBg?: boolean;
 }
 
-const { title, nobg } = Astro.props;
+const { title, noBg } = Astro.props;
 ---
 
 <!doctype html>
@@ -36,9 +36,9 @@ const { title, nobg } = Astro.props;
   <body class="flex flex-col min-h-screen">
     <Header />
     <main class="relative flex-grow">
-      <!-- Background solo se aplica si nobg no está presente o es false -->
+      <!-- Background solo se aplica si noBg no está presente o es false -->
       {
-        !nobg && (
+        !noBg && (
           <div
             class="absolute inset-0 z-0 bg-cover bg-center"
             style="background-image: url('/img/general/shared-cover.jpg'); opacity: 0.1;"

@@ -9,7 +9,7 @@ labels: ['Reseña', 'Terror', 'Cuentos', 'Autoras Latinas']
 ---
 "Cuando el diablo duda, a la mujer pregunta"👹
 
-“Te di ojos y miraste las tinieblas” de la escritora española Irene Solá es un libro donde se narra lahistoria dentro de una casa de un grupo de mujeres, madres e hijas de una misma familia, una casa llena de recuerdos donde vamos conociendo la historia de cada uno de los personajes.
+“Te di ojos y miraste las tinieblas” de la escritora española Irene Solá es un libro donde se narra la historia dentro de una casa de un grupo de mujeres, madres e hijas de una misma familia, una casa llena de recuerdos donde vamos conociendo la historia de cada uno de los personajes.
 
 Originalmente fue escrito en catalán y ha sido traducido a muchos idiomas desde entonces, algo que celebro.
 

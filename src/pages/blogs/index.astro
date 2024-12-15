@@ -17,7 +17,7 @@ const posts = sortByDateDescending(await getCollection('blogs'));
 const currentPath = Astro.url.pathname;
 
 //Obtenemos el post mas reciente para usarlo en la sección de lo más reciente
-const [mostRecentPost, ...allRemainigPosts] = posts;
+const [mostRecentPost, ...allRemainingPosts] = posts;
 
 const slug = slugify(mostRecentPost.data.title);
 const href = `${currentPath}/${slug}`;
@@ -61,7 +61,7 @@ const href = `${currentPath}/${slug}`;
         <SearchPosts/>
       </div>
       <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {allRemainigPosts.map((post) => (
+        {allRemainingPosts.map((post) => (
           <Card
             image={post.data.image}
             title={post.data.title}
