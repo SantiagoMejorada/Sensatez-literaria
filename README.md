@@ -10,7 +10,9 @@ El código del blog es de código abierto, lo que permite que cualquier persona 
 - **TypeScript**: Garantizando un código más seguro y mantenible.
 
 El blog está diseñado para ser compatible tanto con Desktop como con Mobile (aunque aún hay mejoras pendientes en la versión mobile).
-**Nota**: Desarrollo aun sin terminar, puede haber bugs, estilos incompletos o alguna seccion faltante
+
+**Nota**: Desarrollo aun sin terminar, puede haber bugs, estilos incompletos o alguna seccion faltante.
+
 [Vista previa del blog!](https://sensatez-literaria.vercel.app)
 
 
