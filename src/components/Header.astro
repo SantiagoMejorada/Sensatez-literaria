@@ -43,12 +43,20 @@
 </nav>
 
 <script>
-  const menuButton = document.getElementById("menu-button");
-  const menu = document.getElementById("menu");
+  function initMenu() {
+    const menuButton = document.getElementById("menu-button");
+    const menu = document.getElementById("menu");
 
-  if (menuButton && menu) {
-    menuButton.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
+    if (menuButton && menu) {
+      menuButton.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
   }
+
+  // Ejecutar cuando se carga la página
+  initMenu();
+
+  // Ejecutar cuando Astro cambia de página (modo SPA)
+  document.addEventListener("astro:after-swap", initMenu);
 </script>
