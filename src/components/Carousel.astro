@@ -13,9 +13,9 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div class="relative w-full">
+<div class="relative w-full overflow-hidden">
   <div
-    class="carousel-container overflow-hidden relative"
+    class="carousel-container relative"
     id="carousel"
     data-items={JSON.stringify(items)}
   >
@@ -26,16 +26,24 @@ const { items } = Astro.props;
     >
       {
         items.map((item) => (
-          <div class="flex-none w-full min-h-screen flex justify-between items-center p-4 md:p-8"> <!-- Ajuste del padding para móviles -->
-            <div class="bg-white shadow-lg rounded-lg p-4 md:p-8 flex flex-col md:flex-row w-full max-w-6xl mx-auto relative"> <!-- Cambiamos el layout para móviles -->
-              <div class="w-full md:w-1/2"> <!-- Ajustamos el ancho -->
-                <h2 class="text-2xl md:text-4xl font-bold mb-4 font-inter text-[#845533]">{item.title}</h2> <!-- Ajuste del tamaño de texto -->
-                <h3 class="text-xl md:text-2xl mb-4 font-inter text-[#757575]">{item.type}</h3> <!-- Ajuste del tamaño de texto -->
-                <p class="text-sm md:text-lg whitespace-pre-line">{item.text}</p> <!-- Ajuste del tamaño de texto -->
+          <div class="flex-none w-full min-h-screen flex justify-center items-center p-4 md:p-8">
+            <div class="bg-white shadow-lg rounded-lg p-6 md:p-10 flex flex-col md:flex-row w-full max-w-5xl mx-auto relative">
+              <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+                <h2 class="text-2xl md:text-4xl font-bold mb-2 text-[#845533]">
+                  {item.title}
+                </h2>
+                <h3 class="text-lg md:text-2xl mb-3 text-[#757575]">
+                  {item.type}
+                </h3>
+                <p class="text-sm md:text-lg">{item.text}</p>
               </div>
 
-              <div class="w-full md:w-1/2 flex justify-center md:justify-end items-center mt-4 md:mt-0"> <!-- Ajustamos la posición de la imagen -->
-                <img src={item.image} alt={item.title} class="w-64 h-auto object-cover max-h-64 md:w-96 md:max-h-96" /> <!-- Ajuste del tamaño de imagen -->
+              <div class="w-full md:w-1/2 flex justify-center items-center mt-6 md:mt-0">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="w-56 h-auto object-cover max-h-56 md:w-80 md:max-h-80 rounded-lg shadow-md border border-gray-200"
+                />
               </div>
             </div>
           </div>
@@ -43,11 +51,18 @@ const { items } = Astro.props;
       }
     </div>
 
-    <button id="prevButton" class="absolute top-1/2 left-4 md:left-8 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg z-10">
+    <!-- Botones de navegación con mejor posicionamiento y diseño -->
+    <button
+      id="prevButton"
+      class="absolute top-1/2 left-2 md:left-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 text-2xl md:text-4xl text-gray-700 hover:bg-gray-200 transition"
+    >
       &#8249;
     </button>
 
-    <button id="nextButton" class="absolute top-1/2 right-4 md:right-8 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg z-10">
+    <button
+      id="nextButton"
+      class="absolute top-1/2 right-2 md:right-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 text-2xl md:text-4xl text-gray-700 hover:bg-gray-200 transition"
+    >
       &#8250;
     </button>
   </div>
