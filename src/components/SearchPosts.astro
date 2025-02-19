@@ -8,7 +8,7 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function initSearchPost() {
     const searchInput = document.getElementById("search-posts");
     const postsGrid = document.getElementById("posts-grid");
     if (searchInput && postsGrid) {
@@ -40,5 +40,11 @@
         });
       });
     }
-  });
+  }
+
+  // Ejecutar al cargar la página
+  initSearchPost();
+
+  // Ejecutar cuando Astro cambia de página (modo SPA)
+  document.addEventListener("astro:after-swap", initSearchPost);
 </script>
